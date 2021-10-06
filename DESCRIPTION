@@ -9,7 +9,6 @@ Authors@R:
             email = "michael.skvrnak@protonmail.com", 
             role = c("aut", "cre"), 
             comment = c(ORCID = "0000-0003-4647-4095"))
-Maintainer: The package maintainer <yourself@somewhere.net>
 Description: Use morphological tagging, analysis and generation using MorphoDiTa 
     via its Python bindings.
 License: MIT + file LICENSE
@@ -27,4 +26,5 @@ Imports:
     tidyr,
     usethis
 Depends: R (>= 2.10)
+SystemRequirements: Python (>= 3.0.0)
 RoxygenNote: 7.1.1
