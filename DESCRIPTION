@@ -1,16 +1,30 @@
 Package: rmorphodita
 Type: Package
-Title: What the Package Does (Title Case)
+Title: MorphoDiTa in R
 Version: 0.1.0
-Author: Who wrote it
+Date: 2021-10-06
+Authors@R:
+    person(given = "Michael", 
+            family = "Škvrňák", 
+            email = "michael.skvrnak@protonmail.com", 
+            role = c("aut", "cre"), 
+            comment = c(ORCID = "0000-0003-4647-4095"))
 Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Description: Use morphological tagging, analysis and generation using MorphoDiTa 
+    via its Python bindings.
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports: 
+    dplyr,
+    here,
     magrittr,
     purrr,
-    reticulate
+    reticulate,
+    rlang,
+    stringr,
+    tibble,
+    tidyr,
+    usethis
+Depends: R (>= 2.10)
 RoxygenNote: 7.1.1

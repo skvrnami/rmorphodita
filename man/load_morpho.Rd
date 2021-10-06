@@ -2,10 +2,18 @@
 % Please edit documentation in R/funs.R
 \name{load_morpho}
 \alias{load_morpho}
-\title{Load Morpho dictionary}
+\title{Load Morphological dictionary}
 \usage{
 load_morpho(src)
 }
+\arguments{
+\item{src}{Path to the morphological dictionary}
+}
 \description{
-Load Morpho dictionary
+Load Morphological dictionary
+}
+\examples{
+\dontrun{
+load_morpho("src/czech-morfflex-161115.dict")
+}
 }

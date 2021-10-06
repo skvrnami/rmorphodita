@@ -12,3 +12,8 @@ load_tagger(src)
 \description{
 Load tagger
 }
+\examples{
+\dontrun{
+load_tagger("src/czech-morfflex-161115.tagger")
+}
+}

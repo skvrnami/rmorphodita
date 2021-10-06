@@ -7,6 +7,8 @@
 morpho_analyze(tagger, x)
 }
 \arguments{
+\item{tagger}{Morphodita tagger}
+
 \item{x}{a word to analyze}
 }
 \description{

@@ -7,6 +7,8 @@
 morpho_generate(tagger, lemma, tag_wildcard = NULL)
 }
 \arguments{
+\item{tagger}{morphological tagger}
+
 \item{lemma}{a lemma from which forms should be generated}
 
 \item{tag_wildcard}{specification of a form that should be generated}

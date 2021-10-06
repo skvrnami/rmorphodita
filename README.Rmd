@@ -1,0 +1,87 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# rmorphodita
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of rmorphodita is to enable morphological analysis, tagging and generation using [MorphoDiTa's](https://github.com/ufal/morphodita) Python bindings (contained in 
+the [`ufal.morphodita` Python package](https://pypi.org/project/ufal.morphodita/)).
+
+## Installation
+
+And the development version from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("skvrnami/rmorphodita")
+```
+## Example
+
+First you need to install morphodita by running `install_morphodita()`.
+```{r example}
+library(rmorphodita)
+```
+
+```{r, eval=FALSE}
+install_morphodita()
+```
+
+Then you need to download a language model to use for tagging etc.
+There are three languages available: Czech (`CZ`), Slovak (`SK`), and English (`EN`).
+The `download_models` function downloads a .zip file with models from [LINDAT/CLARIAH-CZ repository](https://lindat.mff.cuni.cz/) to a specified directory, unzips them and returns
+list of files with morphological taggers and dictionaries.
+
+```{r download, message=FALSE}
+cz_models <- download_models(lang = "CZ", dest_folder = "tmp")
+cz_models
+```
+
+Then it is necessary to load tagger:
+```{r}
+cz_tagger <- load_tagger(cz_models[8])
+```
+
+```{r}
+tagged_text <- morpho_tag(cz_tagger, "Já bych všechny ty počítače zakázala.", NULL)
+tagged_text
+```
+
+Function `morpho_analyze` returns all possible forms of a word.
+```{r}
+morpho_analyze(cz_tagger, "kout")
+```
+
+And function `morpho_generate` returns all possible forms of a given lemma that
+complies with the specified wildcard. In the case below, it returns all nouns in second case.
+```{r}
+morpho_generate(cz_tagger, "kout", tag_wildcard = "N???2?")
+```
+
+As the tags are quite unintelligible, it is possible to extract and recode them like this.
+The `extract_hm_tags` function splits the tag into columns indicating particular grammatical categories such as part of speech (`pos`), gender, number, case etc.
+The `recode_tags` function then recode the tag marks into factor with a full description of the tag meaning (using the `TAGS` list which stores the meaning of the tag values).
+
+```{r}
+tagged_text %>%
+    extract_hm_tags() %>%
+    recode_tags(., tags_df = TAGS)
+```
+
+```{r, echo=FALSE}
+unlink("tmp", recursive = TRUE)
+```
+

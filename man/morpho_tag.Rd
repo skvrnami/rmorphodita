@@ -4,12 +4,14 @@
 \alias{morpho_tag}
 \title{Tag text}
 \usage{
-morpho_tag(tagger, text)
+morpho_tag(tagger, text, converters = NULL)
 }
 \arguments{
 \item{tagger}{Morphodita Tagger}
 
 \item{text}{Text to be tagger}
+
+\item{converters}{Tag converter}
 }
 \description{
 Tag text
