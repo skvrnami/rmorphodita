@@ -28,3 +28,7 @@ Imports:
 Depends: R (>= 2.10)
 SystemRequirements: Python (>= 3.0.0)
 RoxygenNote: 7.1.1
+Suggests: 
+    covr,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
