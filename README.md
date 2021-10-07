@@ -4,6 +4,10 @@
 # rmorphodita
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/skvrnami/rmorphodita/workflows/R-CMD-check/badge.svg)](https://github.com/skvrnami/rmorphodita/actions)
+[![Codecov test
+coverage](https://codecov.io/gh/skvrnami/rmorphodita/branch/main/graph/badge.svg)](https://codecov.io/gh/skvrnami/rmorphodita?branch=main)
 <!-- badges: end -->
 
 The goal of rmorphodita is to enable morphological analysis, tagging and
