@@ -77,7 +77,8 @@ jobs:
       - name: Install rmorphodita
         run: |
           Rscript -e "try(remotes::install_local())"
-          Rscript -e "try(rmorphodita::install_rmorphodita())"
+          Rscript -e "try(rmorphodita::install_morphodita())"
+          pip3 install ufal.morphodita
 
       - name: Confirm Python and check rmorphodita
         run: |
