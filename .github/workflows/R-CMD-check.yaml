@@ -71,15 +71,17 @@ jobs:
       - name: Install Python
         run: |
           Rscript -e "try(remotes::install_github('rstudio/reticulate'))"
-          Rscript -e "try(reticulate::install_python(version = '3.8.7'))"
-          Rscript -e "reticulate::virtualenv_create('test-environment')"
-          Rscript -e "reticulate::use_virtualenv('test-environment')"
+          Rscript -e "try(reticulate::install_miniconda())"
+          Rscript -e "try(reticulate::conda_create('r-reticulate'))"
 
       - name: Install rmorphodita
         run: |
           Rscript -e "try(remotes::install_local())"
-          Rscript -e "Sys.setenv(RETICULATE_PYTHON_ENV = 'test-environment')"
-          Rscript -e "rmorphodita::install_morphodita()"
+          Rscript -e "try(rmorphodita::install_rmorphodita())"
+
+      - name: Confirm Python and check rmorphodita
+        run: |
+          Rscript -e "try(reticulate::py_config())"
 
       - uses: r-lib/actions/setup-r-dependencies@v1
         with:
