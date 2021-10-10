@@ -78,7 +78,8 @@ jobs:
       - name: Install rmorphodita
         run: |
           Rscript -e "try(remotes::install_local())"
-          Rscript -e "rmorphodita::install_morphodita(envname = 'test-environment')"
+          Rscript -e "Sys.setenv(RETICULATE_PYTHON_ENV = 'test-environment')"
+          Rscript -e "rmorphodita::install_morphodita()"
 
       - uses: r-lib/actions/setup-r-dependencies@v1
         with:
