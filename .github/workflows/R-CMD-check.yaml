@@ -72,7 +72,7 @@ jobs:
         run: |
           Rscript -e "try(remotes::install_github('rstudio/reticulate'))"
           echo 'eval "$(pyenv init -)"'
-          Rscript -e "try(reticulate::install_python(version = "3.8.7"))"
+          Rscript -e "try(reticulate::install_python(version = '3.8.7'))"
           Rscript -e "reticulate::virtualenv_create('test-environment')"
           Rscript -e "reticulate::use_virtualenv('test-environment')"
 
