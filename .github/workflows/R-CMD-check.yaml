@@ -71,20 +71,12 @@ jobs:
       - name: Install Python
         run: |
           Rscript -e "try(remotes::install_github('rstudio/reticulate'))"
-          Rscript -e "try(reticulate::install_miniconda())"
-          Rscript -e "try(reticulate::conda_create('r-reticulate'))"
+          Rscript -e "try(reticulate::install_python())"
 
       - name: Install rmorphodita
-        if: runner.os == 'Windows'
         run: |
           Rscript -e "try(remotes::install_local())"
-          Rscript -e "rmorphodita::install_morphodita()"
-
-      - name: Install rmorphodita
-        if: runner.os != 'Windows'
-        run: |
-          Rscript -e "try(remotes::install_local())"
-          Rscript -e "rmorphodita::install_morphodita(pip = FALSE)"
+          Rscript -e "try(rmorphodita::install_morphodita())"
 
       - uses: r-lib/actions/setup-r-dependencies@v1
         with:
