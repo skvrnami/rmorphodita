@@ -78,6 +78,11 @@ jobs:
         run: |
           Rscript -e "try(remotes::install_local())"
           Rscript -e "try(rmorphodita::install_morphodita())"
+          pip3 install ufal.morphodita
+
+      - name: Confirm Python and check rmorphodita
+        run: |
+          Rscript -e "try(reticulate::py_config())"
 
       - uses: r-lib/actions/setup-r-dependencies@v1
         with:
